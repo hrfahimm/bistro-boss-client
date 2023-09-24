@@ -1,3 +1,5 @@
+/** @format */
+
 import { useContext } from "react";
 import google from "../../../assets/google.png";
 import { AuthContext } from "../../../Provider/AuthProvider";
@@ -12,13 +14,19 @@ const SocialLogin = ({ text }) => {
         googleSignIn().then((result) => {
             const LoggedUser = result.user;
             console.log(LoggedUser);
-            const saveUser = { name: LoggedUser.displayName, email: LoggedUser.email };
+            const saveUser = {
+                name: LoggedUser.displayName,
+                email: LoggedUser.email,
+            };
 
-            fetch("http://localhost:5000/users", {
-                method: "POST",
-                headers: { "content-type": "application/json" },
-                body: JSON.stringify(saveUser),
-            })
+            fetch(
+                "https://bistro-boss-server-6v0burgjz-hrfahimm.vercel.app/users",
+                {
+                    method: "POST",
+                    headers: { "content-type": "application/json" },
+                    body: JSON.stringify(saveUser),
+                }
+            )
                 .then((res) => res.json())
                 .then(() => {
                     navigate(from, { replace: true });
@@ -34,7 +42,10 @@ const SocialLogin = ({ text }) => {
             <button
                 onClick={handleGoogleSignIn}
                 className=' btn btn-circle btn-link   '>
-                <img src={google} alt='logo'/>
+                <img
+                    src={google}
+                    alt='logo'
+                />
             </button>
             <p>{text} With Google</p>
         </div>

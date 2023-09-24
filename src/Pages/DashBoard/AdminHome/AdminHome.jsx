@@ -3,7 +3,9 @@
 import UseAuth from "../../../Hooks/UseAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/UseAuxiosSecure";
-
+import Barchart from "../Graph/Barchart";
+import Pichart from "../Graph/Pichart";
+import { Link } from "react-router-dom";
 const AdminHome = () => {
     const { user } = UseAuth();
     const [axiosSecure] = useAxiosSecure();
@@ -14,6 +16,7 @@ const AdminHome = () => {
             return res.data;
         },
     });
+
     return (
         <div>
             <div className='w-full m-4   text-center'>
@@ -24,10 +27,6 @@ const AdminHome = () => {
                     - {user.displayName} -
                 </h1>
             </div>
-            {/* //
-        //
-        //
-        // */}
 
             <div className='text-center mt-8'>
                 <div className='stats shadow'>
@@ -45,11 +44,9 @@ const AdminHome = () => {
                                     d='M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'></path>
                             </svg>
                         </div>
-                        <div className='stat-title'>Revenu</div> text-xl
+                        <div className='stat-title text-xl'>Revenu</div>
                         <div className='stat-value p-4'> ${stats.revenue}</div>
-                        {/* <div className='stat-desc'>Jan 1st - Feb 1st</div> */}
                     </div>
-
                     <div className='stat'>
                         <div className='stat-figure text-secondary'>
                             <svg
@@ -64,9 +61,10 @@ const AdminHome = () => {
                                     d='M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4'></path>
                             </svg>
                         </div>
-                        <div className='stat-title text-xl'>New Users</div>
-                        <div className='stat-value p-4'>{stats.users}</div>
-                        {/* <div className='stat-desc'>↗︎ 400 (22%)</div> */}
+                        <div className='stat-title text-xl'>Users</div>
+                        <div className='stat-value p-4'>
+                            <Link to='/dashboard/allusers'>{stats.users}</Link>
+                        </div>
                     </div>
                     <div className='stat'>
                         <div className='stat-figure text-secondary'>
@@ -83,10 +81,13 @@ const AdminHome = () => {
                             </svg>
                         </div>
                         <div className='stat-title text-xl'>Menu Items</div>
-                        <div className='stat-value p-4'>{stats.products}</div>
-                        {/* <div className='stat-desc'>↗︎ 400 (22%)</div> */}
+                        <div className='stat-value p-4'>
+                            <Link to='/dashboard/manageitems'>
+                                {" "}
+                                {stats.products}
+                            </Link>
+                        </div>
                     </div>
-
                     <div className='stat'>
                         <div className='stat-figure text-secondary'>
                             <svg
@@ -103,8 +104,11 @@ const AdminHome = () => {
                         </div>
                         <div className='stat-title text-xl'>Orders</div>
                         <div className='stat-value p-4'>{stats.orders}</div>
-                        {/* <div className='stat-desc'>↘︎ 90 (14%)</div> */}
                     </div>
+                </div>
+                <div className='flex'>
+                    <Barchart />
+                    <Pichart />
                 </div>
             </div>
         </div>

@@ -69,15 +69,7 @@ const Navbar = () => {
             </li>
         </>
     );
-    //       VITE_apiKey= AIzaSyAeLSsDUIvdKsnEE8BxPtm6Zvy-2F5bmGY
-    // VITE_authDomain= bistro-boss-s.firebaseapp.com
-    // VITE_projectId= bistro-boss-s
-    // VITE_storageBucket= bistro-boss-s.appspot.com
-    // VITE_messagingSenderId= 1060861552021
-    // VITE_appId= 1:1060861552021:web:311c99a398c7392fa7029c
-    // VITE_Image_Upload_token=603ec13ff1ed4fcfebb3f972aaab8e0e
-    //VITE_Payment_Gateway_pk = pk_test_51Ns4M6E2gEZKNvl82lY9kWs8uMNALpXYfY4ZS7k59KXgOlGI42LXHJTVjQV6Y5S1GAgHS907KzfiSPwZzvxyS52t00kRaN47Vm;
-    //
+
     return (
         <>
             <div className='navbar fixed z-10 bg-opacity-50 rounded bg-black max-w-screen-xl uppercase text-white'>

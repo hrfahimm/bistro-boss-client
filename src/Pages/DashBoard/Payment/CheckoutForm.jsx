@@ -3,6 +3,8 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../Hooks/UseAuxiosSecure";
 import UseAuth from "../../../Hooks/UseAuth";
+
+//import { useForm } from "react-hook-form";
 //import "./Checkform.css";
 
 const CheckoutForm = ({ cart, price }) => {
@@ -14,6 +16,7 @@ const CheckoutForm = ({ cart, price }) => {
     const [clientSecret, setClientSecret] = useState("");
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState("");
+    //const { reset } = useForm();
 
     useEffect(() => {
         if (price > 0) {
@@ -87,6 +90,7 @@ const CheckoutForm = ({ cart, price }) => {
                 if (res.data.result.insertedId) {
                     // display confirm
                 }
+                // reset();
             });
         }
     };
